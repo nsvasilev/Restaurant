@@ -1,12 +1,13 @@
-CREATE TABLE IF NOT EXISTS order_details (
-    id SERIAL PRIMARY KEY,
-     order_status VARCHAR(255) NOT NULL,
-    total_amount DECIMAL(10, 2) NOT NULL
-    );
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS product_categories CASCADE;
+DROP TABLE IF EXISTS product_category_product CASCADE;
+DROP TABLE IF EXISTS order_details CASCADE;
+DROP TABLE IF EXISTS order_details_products CASCADE;
+DROP TABLE IF EXISTS order_approval CASCADE;
 
 -- Создание таблицы Product
 CREATE TABLE IF NOT EXISTS products (
-    id SERIAL PRIMARY KEY,
+     id SERIAL PRIMARY KEY,
      name VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     quantity INT NOT NULL,
@@ -15,16 +16,22 @@ CREATE TABLE IF NOT EXISTS products (
 
 -- Создание таблицы ProductCategory
 CREATE TABLE IF NOT EXISTS product_categories (
-     id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL
     );
 
 -- Создание таблицы для связи Product и ProductCategory
 CREATE TABLE IF NOT EXISTS product_category_product (
-  product_id INT REFERENCES products(id),
+    product_id INT REFERENCES products(id),
     product_category_id INT REFERENCES product_categories(id),
     PRIMARY KEY (product_id, product_category_id)
+    );
+
+CREATE TABLE IF NOT EXISTS order_details (
+    id SERIAL PRIMARY KEY,
+     order_status VARCHAR(255) NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL
     );
 
 -- Создание таблицы для связи OrderDetail и Products
