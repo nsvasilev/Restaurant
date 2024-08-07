@@ -8,14 +8,16 @@ import java.util.List;
 
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@FieldDefaults
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 public class OrderDetail {
-    private long id;
-    private String orderStatus;
-    private List<Product> products;
+    private Long id;
+    private OrderStatus orderStatus;
+    private List<Long> products;
     private BigDecimal totalAmount;
+
+
 }

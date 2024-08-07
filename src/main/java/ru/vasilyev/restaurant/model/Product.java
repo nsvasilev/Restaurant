@@ -8,9 +8,9 @@ import java.util.List;
 
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@FieldDefaults
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 public class Product {
@@ -19,5 +19,10 @@ public class Product {
     private BigDecimal price;
     private int quantity;
     private boolean available;
-    private List<ProductCategory> productCategories;
+    private List<Long> productCategories;
+
+    public Product(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
